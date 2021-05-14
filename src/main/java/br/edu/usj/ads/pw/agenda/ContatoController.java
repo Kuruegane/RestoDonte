@@ -1,5 +1,8 @@
 package br.edu.usj.ads.pw.agenda;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -12,6 +15,26 @@ public class ContatoController {
 
     @Autowired
     ContatoRepository contatoRepository;
+
+
+    @GetMapping(value="/")
+    public ModelAndView getIndex() {
+        // criar um objeto lista
+        List<Contato> lista = new ArrayList<>();
+
+        // preencher esta lista com os dados do banco
+        lista = contatoRepository.findAll();
+
+        // instanciar um template
+        ModelAndView modelAndView = new ModelAndView("index");
+
+        // preencher o template com a lista
+        modelAndView.addObject("lista", lista);
+
+        //retornar o template
+        return modelAndView;
+    }
+    
 
     @GetMapping(value = "/cadastro")
     public ModelAndView getCadastro() {

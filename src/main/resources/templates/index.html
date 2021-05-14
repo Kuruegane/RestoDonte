@@ -12,11 +12,7 @@
 
     <h1>Agenda</h1>
     <ul>
-        <li>Nome - Tipo - Telefone</li>
-        <li>Nome - Tipo - Telefone</li>
-        <li>Nome - Tipo - Telefone</li>
-        <li>Nome - Tipo - Telefone</li>
-        <li>Nome - Tipo - Telefone</li>
+        <li th:each="contato : ${lista}" th:text="${contato.nome}"> </li>
     </ul>
 
     <a href="/cadastro">Novo Contato</a>
