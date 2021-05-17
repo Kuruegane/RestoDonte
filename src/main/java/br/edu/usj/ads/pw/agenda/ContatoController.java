@@ -5,10 +5,10 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.servlet.ModelAndView;
 
 @Controller
 public class ContatoController {
@@ -34,26 +34,29 @@ public class ContatoController {
         //retornar o template
         return modelAndView;
     }
-    
 
-    @GetMapping(value = "/cadastro")
-    public ModelAndView getCadastro() {
+    @GetMapping(value="/editar/{id}")
+    public ModelAndView getEditar(@PathVariable Long id) {
+        Contato contato = new Contato();
+        contato = contatoRepository.findById(id).get();
+
         ModelAndView modelAndView = new ModelAndView("cadastro");
+        modelAndView.addObject("contato", contato);
 
         return modelAndView;
     }
 
-    @PostMapping(value = "/adicionar")
-    public ModelAndView postAdicionar(@RequestParam String nome, @RequestParam String tipo,
-            @RequestParam String telefone) {
-        // criar objeto de tipo contato
+    @GetMapping(value="/cadastro")
+    public ModelAndView getCadastro() {
         Contato contato = new Contato();
+        ModelAndView modelAndView = new ModelAndView("cadastro");
 
-        // preencher objeto contato com os dados
-        contato.setNome(nome);
-        contato.setTipo(tipo);
-        contato.setTelefone(telefone);
+        modelAndView.addObject("contato", contato);
+        return modelAndView;
+    } 
 
+    @PostMapping(value="/adicionar")
+    public ModelAndView postAdiciona(Contato contato) {
         // salvar no banco (usando repository)
         contatoRepository.save(contato);
 
@@ -67,4 +70,13 @@ public class ContatoController {
         return modelAndView;
     }
 
+    @GetMapping(value="/deletar/{id}")
+    public String getDeletar(@PathVariable Long id) {
+        // deletar o objeto com o id passado pelo parametro
+        contatoRepository.deleteById(id);
+
+        // retornar o template 
+        return "redirect:/";
+    }
+ 
 }
