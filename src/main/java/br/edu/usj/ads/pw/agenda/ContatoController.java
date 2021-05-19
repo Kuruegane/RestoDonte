@@ -46,6 +46,22 @@ public class ContatoController {
         return modelAndView;
     }
 
+    @GetMapping(value="/detalhes/{id}")
+    public ModelAndView getDetalhes(@PathVariable Long id) {
+        // ler contato no banco pelo id
+        Contato contato = new Contato();
+        contato = contatoRepository.findById(id).get();
+
+        // instanciar o template
+        ModelAndView modelAndView = new ModelAndView("detalhes");
+
+        // preencher o template com o contato selecionado
+        modelAndView.addObject("contato", contato);
+
+        // retornar template
+        return modelAndView;
+    }
+
     @GetMapping(value="/cadastro")
     public ModelAndView getCadastro() {
         Contato contato = new Contato();
@@ -56,7 +72,7 @@ public class ContatoController {
     } 
 
     @PostMapping(value="/adicionar")
-    public ModelAndView postAdiciona(Contato contato) {
+    public ModelAndView postAdicionar(Contato contato) {
         // salvar no banco (usando repository)
         contatoRepository.save(contato);
 
