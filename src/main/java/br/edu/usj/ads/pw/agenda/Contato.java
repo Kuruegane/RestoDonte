@@ -16,7 +16,7 @@ import lombok.Setter;
 public class Contato {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     Long id;
 
     String nome;
