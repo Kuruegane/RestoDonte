@@ -1,5 +1,37 @@
 .center {
     text-align: center;
     color: black;
-    background-color: lavender;
+    background-color: rgb(228, 185, 68);;
+    padding-top: 10px;
+}
+
+.button {
+    display: inline-block;
+    padding: 15px 25px;
+    font-size: 15px;
+    cursor: pointer;
+    text-align: center;
+    text-decoration: none;
+    outline: none;
+    color: #fff;
+    background-color: rgb(228, 185, 68);
+    border: none;
+    border-radius: 15px;
+    box-shadow: 0 9px #999;
+}
+
+.button:hover {
+    background-color: #d18b08;
+    text-decoration: none;
+    color: #fff;
+}
+
+.button:active {
+    background-color: #c98a04;
+    box-shadow: 0 5px #666;
+    transform: translateY(4px);
+}
+
+.padding {
+    padding-bottom: 6px;
 }
