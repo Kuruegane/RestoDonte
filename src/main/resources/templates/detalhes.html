@@ -2,9 +2,10 @@
 <html lang="pt-BR">
 
 <head>
-    <meta charset='utf-8'>
-    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
-    <title>Cadastro - Reserva</title>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detalhes - Reserva</title>
     <link rel="stylesheet" href="/css/style.css" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
@@ -13,18 +14,15 @@
 </head>
 
 <body style="background-color: rgb(248, 209, 100)">
-
+    
     <h1 class="center">
-        <img src="https://i.pinimg.com/originals/77/f0/7c/77f07c8002d89e9d6f56f9d6df7a9199.png" class="mr-0 padding" alt="Agenda" width="64"height="64">
-        Restaurante Restô Dontê
-        <img src="https://i.pinimg.com/originals/77/f0/7c/77f07c8002d89e9d6f56f9d6df7a9199.png" class="mr-0 padding" alt="Agenda" width="64"height="64">
+        <img src="https://i.pinimg.com/originals/77/f0/7c/77f07c8002d89e9d6f56f9d6df7a9199.png" class="mr-0" alt="Agenda" width="64"height="64">
+        Detalhes - Reserva
+        <img src="https://i.pinimg.com/originals/77/f0/7c/77f07c8002d89e9d6f56f9d6df7a9199.png" class="mr-0" alt="Agenda" width="64"height="64">
     </h1><br>
-    <h2 style="text-align: center; color:#000">
-        <img src="http://simpleicon.com/wp-content/uploads/pen-15.png" class="mr-1" alt="Editar" width="25" height="25">
-        Informe o Reserva
-        <img src="http://simpleicon.com/wp-content/uploads/pen-15.png" class="mr-1" alt="Editar" width="25" height="25">
-    </h2><br>
-    <!--Início Carousel-->
+
+    <h2 style="text-align: center; color:#000">Informações de Reserva</h2><br>
+        <!--Início Carousel-->
 
     <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
         <ol class="carousel-indicators">
@@ -34,13 +32,13 @@
         </ol>
         <div class="carousel-inner">
           <div class="carousel-item active">
-            <img class="d-block w-100" src="https://www.enoivado.com.br/wp-content/uploads/2019/02/doce-sobremesa-casamento-profiterole-de-carolinha-capa.jpg" width="450" height="490" alt="Comida 01">
+            <img class="d-block w-100" src="https://blog.saipos.com/wp-content/uploads/2018/10/Dicas-de-pratos-para-restaurante-SAIPOS-Sistema-para-Restaurantes-1.jpg" width="450" height="490" alt="Comida 01">
           </div>
           <div class="carousel-item">
-            <img class="d-block w-100" src="https://media.gazetadopovo.com.br/bomgourmet/2015/06/670-mahatma-gourmet-3-la-e1433973108185-b24b3fd0.jpg" width="450" height="490" alt="Comida 02">
+            <img class="d-block w-100" src="https://ibis.accor.com/editorial/imagerie/article/comida-mineira-pratos-tipicos-de-cada-regiao-do-brasil-358a_660x440.jpg" width="450" height="490" alt="Comida 02">
           </div>
           <div class="carousel-item">
-            <img class="d-block w-100" src="https://blog.wedy.com/wp-content/uploads/2015/04/sobremesa-para-casamento.png" width="450" height="490" alt="Comida 03">
+            <img class="d-block w-100" src="https://img.elo7.com.br/product/zoom/22565B3/adesivo-parede-prato-comida-frango-salada-restaurante-lindo-adesivo-parede.jpg" width="450" height="490" alt="Comida 03">
           </div>
         </div>
         <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
@@ -55,25 +53,20 @@
 
 
     <!--Fim Carousel-->
-    <br>
-    <form method="POST" action="/adicionar" style="text-align: center;">
-        <label form="nome">Nome: &nbsp;</label>
-        <input type="text" name="nome" id="nome" placeholder="Ex: Fulano" th:value="${reserva.nome}" />&nbsp;
+        <br>
+    <div class="center">
+        <h1 th:text="${reserva.nome}"></h1>
+        <h2 th:text="${reserva.tipo}"></h2>
+        <h3 th:text="${reserva.telefone}"></h3>
+    </div><br>
 
-        <label form="Evento">Evento: &nbsp;</label>
-        <input type="text" name="Evento" id="tipo" placeholder="Ex: Casamento, Niver" th:value="${reserva.tipo}" />&nbsp;
-
-        <label form="telefone">Telefone: &nbsp;</label>
-        <input type="text" name="telefone" id="telefone" placeholder="Ex: 4002-8922" th:value="${reserva.telefone}"/> &nbsp;
-
-        <input type="hidden" name="id" id="id" th:value="${reserva.id}" />
-
-        <button type="submit" class="button" value="Salvar">Salvar</button>
-    </form> <br>
-    <br>
     <div style="text-align: center; padding-bottom: 20px;">
         <a class="button" href="/" role="button">Voltar ao Início</a>
     </div>
+
 </body>
 
 </html>
+
+
+
