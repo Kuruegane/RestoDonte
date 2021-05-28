@@ -19,19 +19,11 @@ public class ReservaController {
 
     @GetMapping(value="/")
     public ModelAndView getIndex() {
-        // criar um objeto lista
+        
         List<Reserva> lista = new ArrayList<>();
-
-        // preencher esta lista com os dados do banco
         lista = reservaRepository.findAll();
-
-        // instanciar um template
         ModelAndView modelAndView = new ModelAndView("index");
-
-        // preencher o template com a lista
         modelAndView.addObject("lista", lista);
-
-        //retornar o template
         return modelAndView;
     }
 
@@ -48,17 +40,10 @@ public class ReservaController {
 
     @GetMapping(value="/detalhes/{id}")
     public ModelAndView getDetalhes(@PathVariable Long id) {
-        // ler reserva no banco pelo id
         Reserva reserva = new Reserva();
         reserva = reservaRepository.findById(id).get();
-
-        // instanciar o template
         ModelAndView modelAndView = new ModelAndView("detalhes");
-
-        // preencher o template com o reserva selecionado
         modelAndView.addObject("reserva", reserva);
-
-        // retornar template
         return modelAndView;
     }
 
@@ -73,25 +58,15 @@ public class ReservaController {
     
     @PostMapping(value="/adicionar")
     public ModelAndView postAdicionar(Reserva reserva) {
-        // salvar no banco (usando repository)
         reservaRepository.save(reserva);
-
-        // criar template
         ModelAndView modelAndView = new ModelAndView("detalhes");
-
-        // popular o template
         modelAndView.addObject("reserva", reserva);
-
-        // retornar
         return modelAndView;
     }
 
     @GetMapping(value="/deletar/{id}")
     public String getDeletar(@PathVariable Long id) {
-        // deletar o objeto com o id passado pelo parametro
         reservaRepository.deleteById(id);
-
-        // retornar o template 
         return "redirect:/";
     }
 
