@@ -70,7 +70,7 @@ public class ReservaController {
         modelAndView.addObject("reserva", reserva);
         return modelAndView;
     } 
-
+    
     @PostMapping(value="/adicionar")
     public ModelAndView postAdicionar(Reserva reserva) {
         // salvar no banco (usando repository)
@@ -94,5 +94,5 @@ public class ReservaController {
         // retornar o template 
         return "redirect:/";
     }
- 
+
 }
